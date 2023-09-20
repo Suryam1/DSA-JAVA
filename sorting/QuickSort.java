@@ -20,17 +20,15 @@ public class QuickSort {
 		int temp=a[i+1];
 		a[i+1]=a[h];
 		a[h]=temp;
-		return (i+1);
+		return(i+1);
 	}
 	
 	public void quickSort(int a[],int l,int h) {
-		
 		if(l<h) {
-			int p=partition(a, l, h);
+			int p = partition(a, l, h);
 			quickSort(a, l, p-1);
 			quickSort(a, p+1, h);
 		}
-		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
