@@ -44,7 +44,29 @@ public class SortAStack {
 		SortAStack obj = new SortAStack();
 		obj.addValuesInStack();
 		obj.sortStack(obj.getStack());
-		System.out.println(obj.getStack()+" "+obj.getStack().peek());
+		System.out.println(obj.getStack());
 	}
 
 }
+/*		Original																Temp
+ * 	5,2,7,3,8,1,6																5
+ * 	2,7,3,8,1,6																	2
+ * 	5,7,3,8,1,6																	2,5
+ * 	7,3,8,1,6																	2,5,7
+ * 	3,8,1,6																		2,3
+ * 	5,7,8,1,6																	2,3,5
+ * 	7,8,1,6																		2,3,5,7
+ * 	8,1,6																		2,3,5,7,8
+ * 	1,6																			1
+ * 	2,3,5,7,8,6																	1,2
+ * 	3,5,7,8,6																	1,2,3
+ * 	5,7,8,6																		1,2,3,5
+ * 	7,8,6																		1,2,3,5,7
+ * 	8,6																			1,2,3,5,7,8
+ * 	6																			1,2,3,5,6
+ * 	7,8																			1,2,3,5,6,7
+ * 	8																			1,2,3,5,6,7,8
+ * 	Empty
+ */	
+
+
