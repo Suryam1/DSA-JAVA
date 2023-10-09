@@ -83,7 +83,6 @@ public class ReverseLinkedList {
 			obj.insertAtEnd(80);
 			
 			obj.show();
-			
 		}
 
 }
