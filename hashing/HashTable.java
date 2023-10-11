@@ -18,16 +18,15 @@ public class HashTable {
 	
 	private HashNode[] buckets;
 	
-	private int size;
-	private int bucketIndex;
-	private int totalBucketSize;
+	private int size;		//Give us the count of total values added
+	private int bucketIndex;		//Use to store hashed key
+	private int totalBucketSize;	//Total size of the array
 	
 	
 	private int emptyBuckets;
 	private int occupiedBuckets;
 
 	public HashTable(int capacity) {
-		// TODO Auto-generated constructor stub
 		this.size=0;
 		this.totalBucketSize=capacity;
 		this.buckets=new HashNode[totalBucketSize];
@@ -153,9 +152,15 @@ public class HashTable {
 
 	public void show() {
 		
+		occupiedBuckets=0;
+		emptyBuckets=0;
+		
 		for(int i=0;i<totalBucketSize;i++) {
 			HashNode head = buckets[i];
 			System.out.print("Index "+i+" : ");
+			if(head!=null) {
+				occupiedBuckets++;
+			}
 			while(head!=null) {
 				System.out.print(head.key+ "--"+ head.value+" ");
 				head=head.next;
@@ -163,10 +168,11 @@ public class HashTable {
 			System.out.println();
 		}
 		
+		emptyBuckets=totalBucketSize-occupiedBuckets;
+		
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
 		System.out.print("N : ");
 		int n= input.nextInt();
