@@ -9,7 +9,7 @@ public class InsertionSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		//picking up an element and placing it at it's correct position
 		int[] arr={5,3,1,4,2,8,10,9,12,7,6};
 		int n=arr.length;
 		for(int i=0;i<n;i++){

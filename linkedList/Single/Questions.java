@@ -1,4 +1,4 @@
-package linkedList.Single;
+package linkedlist.single;
 
 public class Questions {
 

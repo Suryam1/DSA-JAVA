@@ -2,34 +2,23 @@ package mathematics;
 
 public class PrimeFactorization {
 
-	private int number;
-	
-	public PrimeFactorization(int number) {
+	public PrimeFactorization() {
 		// TODO Auto-generated constructor stub
-		this.number=number;
-	}
-	
-	public void getPrimeFactors() {
-		System.out.println("Prime Factors of "+number+":");
-		
-		for(int i=2;i<=number;i++) {
-			while(number%i==0) {
-				number/=i;
-				if(number!=1) {
-					System.out.print(i+ " X ");
+		int n=88;
+		for(int i=2;i<=n;i++){
+			while(n%i==0){
+				n/=i;
+				if(n!=1){
+					System.out.print(i+" x ");
 				}
-				else {
+				else{
 					System.out.println(i);
 				}
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int n=24;
-		PrimeFactorization obj = new PrimeFactorization(n);
-		obj.getPrimeFactors();
+	public static void main(String[] args){
+		new PrimeFactorization();
 	}
 
 }

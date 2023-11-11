@@ -1,4 +1,4 @@
-package linkedList.doubleList;
+package linkedlist.doubleList;
 
 public class DoublyLinkedList {
 

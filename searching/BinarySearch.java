@@ -1,5 +1,7 @@
 package searching;
 
+import java.util.Arrays;
+
 public class BinarySearch {
 
 	public BinarySearch() {
@@ -8,28 +10,30 @@ public class BinarySearch {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int [] arr = {1,2,3,4,5,6,7,8,9,10};
-		int k=1;
-		BinarySearch obj = new BinarySearch();
-		System.out.println(obj.binarySearch(arr,k));
-	}
-
-	private int binarySearch(int[] a,int k) {
-		// TODO Auto-generated method stub
-		int i=0,j=a.length-1;
-		while(i<=j) {
-			int mid=(i+j)/2;
-			if(a[mid]==k) {
-				return mid;
+		
+		int [] arr = {5,4,3,2,1,9,10,23,41,49,69};
+		Arrays.sort(arr);    //array must be sorted
+		int low=0,high=arr.length-1;
+		int key=10,flag=0;
+		while(low<=high){
+			int mid=high-(high-low)/2;
+			if(arr[mid]==key){
+				flag=1;
+				break;
 			}
-			else if(a[mid]<k) {
-				i=mid+1;
+			else if(arr[mid]>key){
+				high=mid-1;
 			}
-			else {
-				j=mid-1;
+			else{
+				low=mid+1;
 			}
 		}
-		return -1;
+		if(flag==0){
+			System.out.println("Not Found");
+		}
+		else{
+			System.out.println("Found");
+		}
 	}
 
 }

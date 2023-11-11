@@ -1,64 +1,59 @@
 package sorting;
 
+
+
 public class MergeSort {
 
 	public MergeSort() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void merge(int[] a,int l,int m,int h) {
-		int n1=m-l+1;
-		int n2=h-m;
+	public void merge(int[] a,int low,int mid,int high) {
+		int n1=mid-low+1;
+		int n2=high-mid;
 		int[] left = new int[n1];
 		int[] right = new int[n2];
+		int p=low,q=mid+1;
 		for(int i=0;i<n1;i++) {
-			left[i]=a[l+i];
+			left[i]=a[p++];
 		}
-		for(int j=0;j<n2;j++) {
-			right[j]=a[m+1+j];	//////////////////////
+		for(int i=0;i<n2;i++) {
+			right[i]=a[q++];
 		}
-		int i=0,j=0,k=l;	/////////////////////
+		int i=0,j=0,k=low;
 		while(i<n1&&j<n2) {
 			if(left[i]<right[j]) {
-				a[k]=left[i];
-				i++;
-				k++;
+				a[k++]=left[i++];
 			}
 			else {
-				a[k]=right[j];
-				j++;
-				k++;
+				a[k++]=right[j++];
 			}
 		}
 		while(i<n1) {
-			a[k]=left[i];
-			i++;
-			k++;
+			a[k++]=left[i++];
 		}
 		while(j<n2) {
-			a[k]=right[j];
-			j++;
-			k++;
+			a[k++]=right[j++];
 		}
+		
 	}
 	
-	public void mergeSort(int[] a,int l,int h) {
-		if(l<h) {
-			int mid=(l+h)/2;
-			mergeSort(a, l, mid);	////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			mergeSort(a, mid+1, h);
-			merge(a, l, mid, h);
+	public void mergeSort(int[] a,int low,int high) {
+		if(low<high) {
+			int mid=(low+high)/2;
+			mergeSort(a, low, mid);
+			mergeSort(a, mid+1, high);
+			merge(a,low,mid,high);
 		}
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int [] arr = {6,8,9,7,5,4,3,1,2,10};
+		
+		int [] arr = {5,4,3,2,1,9,10,23,41,49,69};
 		MergeSort obj = new MergeSort();
 		obj.mergeSort(arr,0,(arr.length-1));
 		for(int i=0;i<arr.length;i++) {
 			System.out.print(arr[i]+" ");
 		}
 	}
-
 }

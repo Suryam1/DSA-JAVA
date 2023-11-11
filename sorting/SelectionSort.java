@@ -8,7 +8,7 @@ public class SelectionSort {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//select the minimum ele and place it a
+		//select the minimum ele and place it at it's correct position
 		int[] arr={5,3,1,4,2,8,10,9,12,7,6};
 		int n=arr.length;
 		for(int i=0;i<n-1;i++){
