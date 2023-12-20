@@ -1,80 +1,56 @@
 package dynamicProgramming;
 
 public class CountMinimumCostPath {
-	
-	/*
-	 * You can move towards right or down, find the minimum cost possible path to reach the destination from 1st cell
-	 */
-	public CountMinimumCostPath() {
-		
-	}
-	public int vis[][]={
-			{-1,-1,-1,-1},
-			{-1,-1,-1,-1},
-			{-1,-1,-1,-1},
-			{-1,-1,-1,-1},
-			
-	};
-	
-	
-	public int minCost(int[][]dp,int r,int c){
-		
-		
-		//Recursion
-		/*if(r==0&&c==0){
-			return dp[r][c];
-		}
-		else if(r<0||c<0){
-			return Integer.MAX_VALUE;
-		}
-		
-		return dp[r][c]+Math.min(minCost(dp,r-1,c), minCost(dp,r,c-1));
-		*/
-		
-		
-		
-		//Memoization
-		/*if(r==0&&c==0)
-			return dp[r][c];
-		else if(r<0||c<0)
-			return Integer.MAX_VALUE;
-		
-		if(vis[r][c]!=-1) return vis[r][c];
-		vis[r][c]=dp[r][c]+Math.min(minCost(dp,r-1,c), minCost(dp,r,c-1));
-		
-		return vis[r][c];*/
-		
-		
-		
-		
-		//Tabulation
-		for(int i=0;i<=r;i++){
-			for(int j=0;j<=c;j++){
-				vis[i][j]=dp[i][j];
-				
-				if(i==0&&j>0) vis[i][j]+=vis[i][j-1];
-				
-				else if(j==0&&i>0) vis[i][j]+=vis[i-1][j];
-				
-				else if(j>0&&i>0)  vis[i][j]+=Math.min(vis[i-1][j],vis[i][j-1]);
-			}
-		}
-		return vis[r][c];
-					
-	}
 
-	public static void main(String[] args) {
-		
-		CountMinimumCostPath obj=new CountMinimumCostPath();
-		int [][] dp={
-				{1,2,3,4},
-				{2,3,4,5},
-				{3,4,5,6},
-				{4,5,6,7},
-				
-				
-		};
-		System.out.println(obj.minCost(dp,3,3));   //row-1 and col-1
-	}
+    // The constructor is not doing anything special here.
+    public CountMinimumCostPath() {
+        
+    }
 
+    // The grid to store costs.
+    public int vis[][] = {
+            {-1, -1, -1, -1},
+            {-1, -1, -1, -1},
+            {-1, -1, -1, -1},
+            {-1, -1, -1, -1},
+    };
+
+    // The method to find the minimum cost path using dynamic programming.
+    public int minCost(int[][] dp, int r, int c) {
+        // Loop through each cell in the grid.
+        for (int i = 0; i <= r; i++) {
+            for (int j = 0; j <= c; j++) {
+                // Copy the cost of the current cell to the 'vis' array.
+                vis[i][j] = dp[i][j];
+
+                // If not in the first row, add the cost from the cell on the left.
+                if (i == 0 && j > 0)
+                    vis[i][j] += vis[i][j - 1];
+                // If not in the first column, add the cost from the cell above.
+                else if (j == 0 && i > 0)
+                    vis[i][j] += vis[i - 1][j];
+                // If not in the first row or first column, add the minimum cost from the cell above or on the left.
+                else if (j > 0 && i > 0)
+                    vis[i][j] += Math.min(vis[i - 1][j], vis[i][j - 1]);
+            }
+        }
+        // The final cell now contains the minimum cost path.
+        return vis[r][c];
+    }
+
+    public static void main(String[] args) {
+        // Creating an object of CountMinimumCostPath class.
+        CountMinimumCostPath obj = new CountMinimumCostPath();
+        
+        // The grid of costs.
+        int[][] dp = {
+                {1, 2, 3, 4},
+                {2, 3, 4, 5},
+                {3, 4, 5, 6},
+                {4, 5, 6, 7},
+        };
+
+        // Calling the minCost method to find the minimum cost path from (0,0) to (3,3).
+        System.out.println(obj.minCost(dp, 3, 3));
+    }
 }

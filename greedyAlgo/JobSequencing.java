@@ -1,9 +1,6 @@
 package greedyAlgo;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import oop.Abstraction;
 
 public class JobSequencing{
 	public JobSequencing() {
